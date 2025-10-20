@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AthleteX</title>
+    <link rel="stylesheet" href="../CSS/IMC.css">
+    
+    <!-- Bootstrap CSS -->
+    <script src="../jquery/jquery-3.7.1.js"></script>
+    <script src="../jquery/jquery-3.7.1.min.js"></script>
+    <script src="../popper/popper.min.js"></script>
+    <script src="../sweetalert2-11.22.4/package/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="../bootstrap-4.1.3-dist/css/bootstrap.min.css">
+    <script src="../bootstrap-4.1.3-dist/js/bootstrap.js"></script>
+    <script src="../bootstrap-4.1.3-dist/js/jquery-3.7.1.min.js"></script>
+</head>
+
+<body style="background-color: #272727; color: #fff;">
+    <div class="header" id="header">
+        <button onclick="ativarSidebar()" class="btn_icon_header">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+            </svg>
+        </button>
+        <div class="logo_header">
+            <img src="../FOTOS/logo1.preto.png" class="logo_header" alt="AthleteX">
+        </div>
+        <div class="navegador_header" id="navegador_header">
+            <button onclick="ativarSidebar()" class="btn_icon_header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                </svg>
+            </button>
+            <a href="../HTML/index.html" class="nativo">MENU</a>
+            <a href="../HTML/IMC.html" class="ativo">IMC</a>
+            <a href="../HTML/consumo.html" class="nativo">CONSUMO</a>
+            <a href="../HTML/suporte.html" class="nativo">SUPORTE</a>
+            <a href="../HTML/athletex.html" class="nativo">ATHLETEX</a>
+        </div>
+    </div>
+
+    <div onclick="closeSidebar()" class="content" id="content">
+        <div class="pad">
+            <h1 style="color: #b040ff; font-weight: bold; text-align: center;">IMC</h1>
+            <p><br>&nbsp&nbspIMC é uma sigla e significa "Índice de Massa Corporal". O IMC é uma das formas de avaliação
+                corporal
+                recomendada pela OMS (Organização Mundial de Saúde) para classificação do estado antropométrico, ou
+                seja, da composição corporal do indivíduo.
+            </p><br>
+            <p>&nbsp&nbspO índice de massa corporal (IMC) é uma forma simples de identificar problemas relacionados ao
+                peso, como obesidade
+                ou desnutrição, em crianças, adolescentes, adultos e idosos. Além de calcular o valor de IMC, esta
+                calculadora também indica qual o
+                intervalo de peso ideal que deve ter para garantir uma melhor qualidade de vida. Ter um peso dentro do
+                intervalo ideal ajuda a evitar
+                o aparecimento de várias doenças crônicas, como diabetes e hipertensão.
+            </p><br><br>
+        </div><br>
+
+        <div class="pad">
+            <h1 style="color: #b040ff; font-weight: bold; text-align: center;">Como é feito o cálculo de IMC</h1><br>
+            <p style="text-align: center;">O IMC é calculado dividindo o peso (em kg) pela altura ao quadrado (em
+                metros),
+                de acordo com a seguinte fórmula: IMC = peso / (altura x altura).</p><br><br>
+        </div><br>
+
+        <div id="calculadora">
+            <div id="box_geral">
+                <h4 id="titulo" style="color:#b040ff"><strong>Calculadora de IMC</strong></h4>
+                <div id="box_altura">
+                    <form>
+                        <label id="altura">Insira sua altura:</label>
+                        <input id="btnAltura" type="number" required autofocus placeholder="Altura em CM">
+                    </form>
+                </div>
+                <div id="box_peso">
+                    <form>
+                        <label id="peso">Insira seu peso:</label>
+                        <input id="btnPeso" type="number" required autofocus placeholder="Peso em KG">
+                    </form>
+                </div>
+                <div id="box_enviar">
+                    <input type="button" style="width:100px; font-weight: bold" id="btnClique" value="Enviar"
+                        title="Enviar dados" class="btn btn-success" onclick="exibir()">
+                    <input type="reset" style="width:100px; font-weight: bold" id="btnCancelar" value="Cancelar"
+                        class="btn btn-danger" onclick="Cancelar()">
+                </div>
+            </div>
+        </div><br>
+
+        <div class="pad">
+            <h1 style="color: #b040ff; font-weight: bold; text-align: center;">O que significa o resultado do IMC</h1>
+            <br>
+            <p style="text-align: center;">Depois de obter o resultado de IMC, deve-se interpretar o valor utilizando a
+                seguinte tabela:</p>
+            <div class="container" id="tabela">
+                <div class="row border border-warning bg-transparent justify-content-center align-items-center">
+                    <div class="col"><strong>IMC</strong></div>
+                    <div class="col"><strong>Classificação</strong></div>
+                    <div class="w-100"></div>
+
+                    <div class="col">Menor que 18,5</div>
+                    <div class="col">Magreza</div>
+                    <div class="w-100"></div>
+
+                    <div class="col">18,5 a 24,9</div>
+                    <div class="col">Normal</div>
+                    <div class="w-100"></div>
+
+                    <div class="col">25 a 29,9</div>
+                    <div class="col">Sobrepeso</div>
+                    <div class="w-100"></div>
+
+                    <div class="col">30 a 34,9</div>
+                    <div class="col">Obesidade grau I</div>
+                    <div class="w-100"></div>
+
+                    <div class="col">35 a 39,9</div>
+                    <div class="col">Obesidade grau II</div>
+                    <div class="w-100"></div>
+
+                    <div class="col">Acima de 39,9</div>
+                    <div class="col">Obesidade grau III</div>
+                    <div class="w-100"></div>
+                </div>
+            </div><br><br>
+        </div><br>
+    </div><br>
+
+    <div class="footer">
+        <p>Email: AthleteX@gmail.com</p>
+        <p>Whatsapp: +11 916900990</p>
+        <p>Instagram: @Lukaoriii e @_Hiideki</p>
+        <p>ETEC Lauro Gomes - São Bernardo do Campo, SP</p>
+    </div>
+
+</body>
+
+<script src="../JS/imc.js">
+</script>
+
+</html>
